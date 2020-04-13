@@ -11,11 +11,12 @@ zephyr_library_import(rail_lib_static ${CMAKE_CURRENT_SOURCE_DIR}/${RAIL_LIB_STA
 
 zephyr_interface_library_named(RAIL_LIB)
 
-target_include_directories(RAIL_LIB INTERFACE
+zephyr_include_directories(
 	common/
 	chip/efr32/efr32xg1x/
+	plugin/pa-conversions/
 )
 
-target_include_directories_ifdef(CONFIG_SOC_GECKO_RAIL_LIB_IEEE802154 RAIL_LIB INTERFACE
+zephyr_include_directories_ifdef(CONFIG_SOC_GECKO_RAIL_LIB_IEEE802154
 	protocol/ieee802154/
 )
